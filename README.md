@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     direction TB
 
@@ -76,3 +77,4 @@ classDiagram
     %% Repository Inheritance
     IPropertyRepository --|> IRepository
     PropertyRepositoryImpl ..|> IPropertyRepository
+```
