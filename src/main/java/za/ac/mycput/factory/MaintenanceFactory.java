@@ -12,6 +12,22 @@ import java.time.LocalDate;
  */
 public class MaintenanceFactory {
     public static Maintenance createMaintenance(String requestId, String description, String status, LocalDate reportedDate, double cost){
+        if(requestId == null || requestId.isEmpty()){
+            return null;
+        }
+        if(description == null || description.isEmpty()){
+            return null;
+        }
+        if(status == null || status.isEmpty()){
+            return null;
+        }
+        if(reportedDate == null){
+            return null;
+        }
+        if(cost < 0){
+            return null;
+        }
+
         return new Maintenance.Builder()
                 .setRequestId(requestId)
                 .setDescription(description)

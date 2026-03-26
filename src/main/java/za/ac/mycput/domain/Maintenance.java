@@ -47,7 +47,7 @@ public class Maintenance {
     public double getCost() {
         return cost;
     }
-    public static class Builder{
+    public static class Builder {
         private String requestId;
         private String description;
         private String status;
@@ -78,10 +78,20 @@ public class Maintenance {
             this.cost = cost;
             return this;
         }
-        public Maintenance build(){
+
+        public Builder copy(Maintenance maintenance) {
+            this.requestId = maintenance.requestId;
+            this.description = maintenance.description;
+            this.status = maintenance.status;
+            this.reportedDate = maintenance.reportedDate;
+            this.cost = maintenance.cost;
+            return this;
+        }
+
+        public Maintenance build() {
             return new Maintenance(this);
         }
-        }
+    }
 
     @Override
     public String toString() {

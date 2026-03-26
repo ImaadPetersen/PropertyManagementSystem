@@ -11,45 +11,51 @@ package za.ac.mycput.repository.impl;
 import za.ac.mycput.domain.Maintenance;
 import za.ac.mycput.repository.IMaintenanceRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MaintenanceRepositoryImpl implements IMaintenanceRepository {
-    private Set<Maintenance> maintenanceDB = new HashSet<>();
+    private static MaintenanceRepositoryImpl repository = null;
+
+    private Map<String,Maintenance> maintenanceMap;
+
+    private MaintenanceRepositoryImpl(){
+        maintenanceMap = new HashMap<>();
+    }
+    public static MaintenanceRepositoryImpl getRepository(){
+        if(repository == null){
+            repository = new MaintenanceRepositoryImpl();
+        }
+        return repository;
+    }
+
 
     @Override
-    public Maintenance create(Maintenance maintenance){
-        maintenanceDB.add(maintenance);
+    public Maintenance save(Maintenance maintenance){
+        maintenanceMap.put(maintenance.getRequestId(), maintenance);
         return maintenance;
     }
+
     @Override
-    public Maintenance read(String requestId){
-        return maintenanceDB.stream()
-                .filter(m -> m.getRequestId().equals(requestId))
-                .findAny()
-                .orElse(null);
+    public Maintenance findById(String requestId){
+        return maintenanceMap.get(requestId);
     }
+
     @Override
-    public Maintenance update(Maintenance maintenance){
-        Maintenance old = read(maintenance.getRequestId());
-        if(old !=null){
-            maintenanceDB.remove(old);
-            maintenanceDB.add(maintenance);
+    public List<Maintenance> findAll(){
+            return new ArrayList<>(maintenanceMap.values());
+    }
+
+
+    @Override
+    public Maintenance update (Maintenance maintenance){
+        if(maintenanceMap.containsKey(maintenance.getRequestId())){
+            maintenanceMap.put(maintenance.getRequestId(), maintenance);
             return maintenance;
         }
         return null;
     }
     @Override
-    public boolean delete(String requestId){
-        Maintenance m = read(requestId);
-        if (m !=null){
-            maintenanceDB.remove(m);
-            return true;
-        }
-        return false;
-    }
-    @Override
-    public Set<Maintenance> getAll(){
-        return maintenanceDB;
+    public void delete(String requestId){
+        maintenanceMap.remove(requestId);
     }
 }
