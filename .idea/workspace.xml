@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fce8b2e0-5ec5-472a-9715-d11d873720e6" name="Changes" comment="Initial commit for maintenance">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/za/ac/mycput/factory/MaintenanceFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/za/ac/mycput/factory/MaintenanceFactoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +95,7 @@
       <workItem from="1774472266311" duration="5712000" />
       <workItem from="1774510682633" duration="1781000" />
       <workItem from="1774520377113" duration="3324000" />
-      <workItem from="1774537246328" duration="273000" />
+      <workItem from="1774537246328" duration="1594000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit for maintenance">
       <option name="closed" value="true" />
